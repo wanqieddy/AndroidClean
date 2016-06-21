@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/wanqi/work_list/eddy_work/android/demo/AndroidClean/app/build/intermediates/exploded-aar/AndroidClean/domain/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="351bc5062d8bbd6bcbc01a9b78c08945cf78d115">
+        <dex dex="/home/wanqi/work_list/eddy_work/android/demo/AndroidClean/app/build/intermediates/pre-dexed/debug/AndroidClean-domain-unspecified_de1a15601a00d4dc39047c81d9c8aca7b637605b.jar" />
+    </item>
+
+</items>

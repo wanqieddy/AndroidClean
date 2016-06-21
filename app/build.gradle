@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt' // 注释处理
+
+android {
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode globalConfiguration.getAt("androidVersionCode")
+        versionName globalConfiguration.getAt("androidVersionName")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    def developmentDependencies = rootProject.ext.developmentDependencies
+    def developmentTestDependencies = rootProject.ext.developmentTestDependencies
+
+    apt developmentDependencies.daggerCompiler
+    compile developmentDependencies.dagger
+    compile developmentDependencies.butterKnife
+    compile developmentDependencies.rxJava
+    compile developmentDependencies.rxAndroid
+    provided developmentDependencies.javaxAnnotation
+    compile developmentDependencies.glide
+    compile developmentDependencies.cardview
+    compile developmentDependencies.design
+    compile developmentDependencies.appcompat
+    compile developmentDependencies.recyclerAnimation
+    compile developmentDependencies.rxBinding
+    compile developmentDependencies.rxBindingV7
+    compile developmentDependencies.rxBindingDesign
+    compile developmentDependencies.rxBindingRecycler
+    compile developmentDependencies.circleImageView
+    compile developmentDependencies.rxlifecycle
+
+
+    compile project(':data')
+
+}
